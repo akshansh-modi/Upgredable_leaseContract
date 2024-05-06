@@ -1,0 +1,825 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "InvalidInitialization",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotInitializing",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "id",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "startDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "endDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "monthlyRent",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "rentDue",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "lastRentPaidDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "advanceAmountPaid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "securityDepositPaid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "renewLease",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "renewLeaseOwner",
+								"type": "bool"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct LeaseContract.Tenant",
+						"name": "tenant",
+						"type": "tuple"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "DisputeHandled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint64",
+						"name": "version",
+						"type": "uint64"
+					}
+				],
+				"name": "Initialized",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "id",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "startDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "endDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "monthlyRent",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "rentDue",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "lastRentPaidDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "advanceAmountPaid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "securityDepositPaid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "renewLease",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "renewLeaseOwner",
+								"type": "bool"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct LeaseContract.Tenant",
+						"name": "tenant",
+						"type": "tuple"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "rent",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newLastDate",
+						"type": "uint256"
+					}
+				],
+				"name": "LeaseRenewed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "id",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "startDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "endDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "monthlyRent",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "rentDue",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "lastRentPaidDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "advanceAmountPaid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "securityDepositPaid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "renewLease",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "renewLeaseOwner",
+								"type": "bool"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct LeaseContract.Tenant",
+						"name": "tenant",
+						"type": "tuple"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "endDate",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "securityDepositReturned",
+						"type": "uint256"
+					}
+				],
+				"name": "LeaseTerminated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "message",
+						"type": "string"
+					}
+				],
+				"name": "Message",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "id",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "startDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "endDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "monthlyRent",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "rentDue",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "lastRentPaidDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "advanceAmountPaid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "securityDepositPaid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "renewLease",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "renewLeaseOwner",
+								"type": "bool"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct LeaseContract.Tenant",
+						"name": "tenant",
+						"type": "tuple"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "rent",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "lastRentPaidDate",
+						"type": "uint256"
+					}
+				],
+				"name": "RentPaid",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "enum LeaseContract.StateLeaseContract",
+						"name": "state",
+						"type": "uint8"
+					}
+				],
+				"name": "StatusChanged",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "RentRenewLease",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "currentTenantAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getCurrentTenant",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "id",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "startDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "endDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "monthlyRent",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "rentDue",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "lastRentPaidDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "advanceAmountPaid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "securityDepositPaid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "renewLease",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "renewLeaseOwner",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct LeaseContract.Tenant",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getLeaseState",
+				"outputs": [
+					{
+						"internalType": "enum LeaseContract.StateLeaseContract",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_id",
+						"type": "address"
+					}
+				],
+				"name": "getTenant",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "id",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "startDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "endDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "monthlyRent",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "rentDue",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "lastRentPaidDate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "advanceAmountPaid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "securityDepositPaid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "renewLease",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "renewLeaseOwner",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct LeaseContract.Tenant",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "incrementRate",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_incrementRate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_monthlyRent",
+						"type": "uint256"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "monthlyRent",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "payRent",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "rent",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "setAvailable",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "setInactive",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bool",
+						"name": "_decision",
+						"type": "bool"
+					}
+				],
+				"name": "setRenewLeaseOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bool",
+						"name": "_decision",
+						"type": "bool"
+					}
+				],
+				"name": "setRenewLeaseTenant",
+				"outputs": [],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "setRented",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "terminateLease",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"errors": {
+				"InvalidInitialization()": [
+					{
+						"details": "The contract is already initialized."
+					}
+				],
+				"NotInitializing()": [
+					{
+						"details": "The contract is not initializing."
+					}
+				]
+			},
+			"events": {
+				"Initialized(uint64)": {
+					"details": "Triggered when the contract has been initialized or reinitialized."
+				}
+			},
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"hardhat-ignition-contract/contracts/leaseContract.sol": "LeaseContract"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": {
+			"keccak256": "0x631188737069917d2f909d29ce62c4d48611d326686ba6683e26b72a23bfac0b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7a61054ae84cd6c4d04c0c4450ba1d6de41e27e0a2c4f1bcdf58f796b401c609",
+				"dweb:/ipfs/QmUvtdp7X1mRVyC3CsHrtPbgoqWaXHp3S1ZR24tpAQYJWM"
+			]
+		},
+		"@openzeppelin/contracts/access/Ownable.sol": {
+			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
+				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
+			]
+		},
+		"@openzeppelin/contracts/proxy/ERC1967/ERC1967Utils.sol": {
+			"keccak256": "0x06a78f9b3ee3e6d0eb4e4cd635ba49960bea34cac1db8c0a27c75f2319f1fd65",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://547d21aa17f4f3f1a1a7edf7167beff8dd9496a0348d5588f15cc8a4b29d052a",
+				"dweb:/ipfs/QmT16JtRQSWNpLo9W23jr6CzaMuTAcQcjJJcdRd8HLJ6cE"
+			]
+		},
+		"@openzeppelin/contracts/proxy/Proxy.sol": {
+			"keccak256": "0xc3f2ec76a3de8ed7a7007c46166f5550c72c7709e3fc7e8bb3111a7191cdedbd",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e73efb4c2ca655882dc237c6b4f234a9bd36d97159d8fcaa837eb01171f726ac",
+				"dweb:/ipfs/QmTNnnv7Gu5fs5G1ZMh7Fexp8N4XUs3XrNAngjcxgiss3e"
+			]
+		},
+		"@openzeppelin/contracts/proxy/beacon/BeaconProxy.sol": {
+			"keccak256": "0x387ebdcb365b8e620f26645d2b34a161cd39eedfb0219e8baff55630c5ae113c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://744ea187c195e31cb9201e63ca291fca9e623747f54f0ba390b366a6213b8964",
+				"dweb:/ipfs/Qmc547qfV4sz65DC9B4okx1HvgxwUzJR7zTfKKbTzL3UQT"
+			]
+		},
+		"@openzeppelin/contracts/proxy/beacon/IBeacon.sol": {
+			"keccak256": "0xc59a78b07b44b2cf2e8ab4175fca91e8eca1eee2df7357b8d2a8833e5ea1f64c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5aa4f07e65444784c29cd7bfcc2341b34381e4e5b5da9f0c5bd00d7f430e66fa",
+				"dweb:/ipfs/QmWRMh4Q9DpaU9GvsiXmDdoNYMyyece9if7hnfLz7uqzWM"
+			]
+		},
+		"@openzeppelin/contracts/proxy/beacon/UpgradeableBeacon.sol": {
+			"keccak256": "0x5920bac7215d12961e23b207f6e81a1d64aa4935a4469abe95b64a96a3c3007b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b34bb828c45c3a4ebf6c2c585971abf5089e61357a3818a2900c7e85b74a1299",
+				"dweb:/ipfs/QmewGAzKsPXYfSjCKxuH1SekKxtdyzhdbdyxjF5gohLigt"
+			]
+		},
+		"@openzeppelin/contracts/utils/Address.sol": {
+			"keccak256": "0xaf28a975a78550e45f65e559a3ad6a5ad43b9b8a37366999abd1b7084eb70721",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b7bd24e224f67f65bfadf85dc2929fa965456bb2415478bd0125471b5ce35245",
+				"dweb:/ipfs/QmRaydGr8BTHs1kvaZfsNU69pKzUAGFrvABn1KiRSbE51y"
+			]
+		},
+		"@openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
+				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
+			]
+		},
+		"@openzeppelin/contracts/utils/StorageSlot.sol": {
+			"keccak256": "0x32ba59b4b7299237c8ba56319110989d7978a039faf754793064e967e5894418",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1ae50c8b562427df610cc4540c9bf104acca7ef8e2dcae567ae7e52272281e9c",
+				"dweb:/ipfs/QmTHiadFCSJUPpRjNegc5SahmeU8bAoY8i9Aq6tVscbcKR"
+			]
+		},
+		"hardhat-ignition-contract/contracts/leaseContract.sol": {
+			"keccak256": "0x2c24c150ffb625211585405f1955199dc09ca743c3b462c2c597abb2822e0885",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2c5ce11ddaa6138cd4f7a00478c34ebb2d3df5993a4bb5c4256a81e974486af8",
+				"dweb:/ipfs/QmTjPv2SGve3Zn8BvBiKEJ3NDGahPPhSFxTsmYk3AEfdhA"
+			]
+		}
+	},
+	"version": 1
+}
